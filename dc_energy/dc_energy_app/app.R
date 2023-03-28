@@ -108,7 +108,7 @@ server <- function(input, output) {
       t.test(log(energy_uni()[[input$uni_var]]),
              mu = input$uni_null,conf.level = 0.95) %>%
         tidy() -> temp
-      tribble(~"P-value", ~"Estimate", ~"95% Lower", ~"95% Upper",
+      tribble(~"P-value", ~"Estimate", ~"95% Lower", "~95% Upper",
               temp$p.value[[1]], temp$estimate[[1]], temp$conf.low[[1]],
               temp$conf.high[[1]])
     } else {
@@ -119,6 +119,7 @@ server <- function(input, output) {
               temp$conf.high[[1]])
     }
   }) #End of renderTable function
+  
   
   energy_bi <- reactive(
     
